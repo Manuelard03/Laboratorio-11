@@ -6,23 +6,27 @@ export const traerTienda = async () => {
 
 // export class producto
 
-export class producto {
-    imagen = ""
-    title = ""
-
-    constructor(imagen, title) {
-        this.imagen = image;
-        this.title = title;
+export class Producto {
+    #imagen = ""
+    #id = ""
+}
+    constructor(id, imagen) {
+        this.#id = id;
+        this.#imagen = imagen;
     }
 
     render() {
-        const div = document.createElement ('div')
-        const jpg = document.createElement ('img')
-        const titulo = document.createElement ('p')
-        jpg.src = this.imagen;
-
-        div.appendChild(jpg);
-        div.appendChild(titulo);
-        return div;
+        const image = document.createElement ("img");
+        image.id ="image"+ this.#id;
+        image.src = this.#imagen;
+        image.classList.add("image");
+        
+        return image;
     }
-}
+
+    addClickListener() {
+        const image = document.querySelector("#image"+this.#id);
+        image.addEventListener("click", () => {
+            window.location = "/product.html?productId="+this.#id
+        })
+    }
